@@ -1,4 +1,4 @@
-const {nlp} = require('./nlp');
+const { nlp } = require('./nlp/nlp.js');
 
 module.exports.nlp = async event => {
   try{

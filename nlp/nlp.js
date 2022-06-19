@@ -1,26 +1,24 @@
 const S = require ('sanctuary');
-const stopwords = require('./stopwords.js').english
-const {stemmer} = require('./stemmer.js')
-// var WordPOS = require('wordpos'),
-//     wordpos = new WordPOS();
+const stopwords = require('./stopwords.js').english;
+const {stemmer} = require('./stemmer.js');
 
 const nlp = x => {
-  const stringify = x => x.toString()
+  const stringify = x => x.toString();
 
   // :: str -> str
   const toLowerCase = x => x.toLowerCase();
 
   // :: str -> str
-  const replace = x => y => z => x.replace(y, z)
+  const replace = x => y => z => x.replace(y, z);
 
   // :: str -> str
   const remove = x => y => replace(x)(y)('');
 
   // :: str -> str
-  const removeLineBreaks = x => remove(x)(/(\r\n|\n|\r)/gm)
+  const removeLineBreaks = x => remove(x)(/(\r\n|\n|\r)/gm);
 
   // :: str -> str
-  const removePunctuation = x => remove(x)(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g)
+  const removePunctuation = x => remove(x)(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g);
 
   // :: body.omit -> array
   const getOmittedWords = x => {
